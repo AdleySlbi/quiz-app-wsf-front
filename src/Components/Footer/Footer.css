@@ -1,0 +1,24 @@
+.footer {
+  width: 100%;
+  background-color: #eee;
+  border-top: solid 1px #999;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  position: fixed;
+  bottom: 0;
+}
+
+.icon {
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.icon svg :hover {
+  color: #999;
+  transform: scale(1.1);
+}
