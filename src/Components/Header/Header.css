@@ -6,8 +6,26 @@
 }
 
 .logo {
-  font-family: OpenSans;
   color: #1730a4;
   font-size: 30px;
   font-style: italic;
+}
+
+.menu-nav {
+  color: #868686;
+  display: flex;
+  font-size: 18px;
+}
+
+.nav-link {
+  transition: all 0.1s ease-in-out;
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
+}
+
+.nav-link a:hover {
+  text-decoration: none;
+  color: #1730a4;
 }

@@ -5,14 +5,20 @@ import "./Header.css";
 function Header() {
   return (
     <React.Fragment>
-      <div className="container header">
+      <div className="header container">
         <span className="logo">
           Notre <b>EGO-QUIZ</b>
         </span>
-        <span>
-          <Link to="/">Accueil</Link>
-          <Link to="/score">Leaderboards</Link>
-          <Link to="/teams">Notre équipe</Link>
+        <span className="menu-nav">
+          <div className="nav-link">
+            <Link to="/">Accueil</Link>
+          </div>
+          <div className="nav-link">
+            <Link to="/score">Leaderboards</Link>
+          </div>
+          <div className="nav-link">
+            <Link to="/teams">Notre équipe</Link>
+          </div>
         </span>
       </div>
     </React.Fragment>
