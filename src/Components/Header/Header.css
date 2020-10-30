@@ -1,7 +1,13 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 h1 {
-  font-family: Lobster;
+  font-family: OpenSans;
   color: #428bca;
-  font-size: 4rem;
+  font-size: 30px;
   margin: 0;
   font-weight: 100;
 }
