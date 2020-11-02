@@ -3,6 +3,7 @@
   background-color: #eee;
   border-top: solid 1px #999;
   display: flex;
+  visibility: hidden;
   justify-content: center;
   margin-top: 10px;
   position: fixed;

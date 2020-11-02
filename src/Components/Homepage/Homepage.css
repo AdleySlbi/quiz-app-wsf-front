@@ -1,0 +1,50 @@
+.homepage {
+  height: 100%;
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+  .homepage-background {
+    width: 100%;
+  }
+}
+
+.homepage-background {
+  width: 40%;
+}
+
+.home-text {
+  height: max-content;
+}
+
+.home-title {
+  color: #1730a4;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.button {
+  background: #ffbc48;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 45px;
+  margin: 0 auto;
+  width: 273px;
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  transition: all 0.1s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.button a:hover {
+  color: #1730a4;
+  text-decoration: none;
+}

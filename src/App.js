@@ -1,7 +1,8 @@
 import { Route, Switch } from "react-router-dom";
 import Header from "./Components/Header/Header";
-import Questions from "./Components/Questions/Questions";
+import Homepage from "./Components/Homepage/Homepage";
 import Leaderboards from "./Components/Leaderboards/Leaderboards";
+import Questions from "./Components/Questions/Questions";
 import Equipe from "./Components/Equipe/Equipe";
 import Footer from "./Components/Footer/Footer";
 
@@ -14,8 +15,9 @@ function App() {
       <div className="App">
         <Header></Header>
         <Switch>
-          <Route path="/" exact component={Questions} />
+          <Route path="/" exact component={Homepage} />
           <Route path="/score" component={Leaderboards} />
+          <Route path="/quiz" component={Questions} />
           <Route path="/teams" component={Equipe} />
           {/* <Route
             path="/sample"
@@ -24,7 +26,7 @@ function App() {
             )}
           /> */}
         </Switch>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </div>
     </React.Fragment>
   );
