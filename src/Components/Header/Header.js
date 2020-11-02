@@ -5,7 +5,7 @@ import "./Header.css";
 function Header() {
   return (
     <React.Fragment>
-      <div className="header container">
+      <div className="header d-flex justify-content-around">
         <span className="logo">
           Notre <b>EGO-QUIZ</b>
         </span>
