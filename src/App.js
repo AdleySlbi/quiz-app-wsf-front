@@ -4,7 +4,7 @@ import Homepage from "./Components/Homepage/Homepage";
 import Leaderboards from "./Components/Leaderboards/Leaderboards";
 import Questions from "./Components/Questions/Questions";
 import Equipe from "./Components/Equipe/Equipe";
-import Footer from "./Components/Footer/Footer";
+// import Footer from "./Components/Footer/Footer";
 
 import React from "react";
 import "./App.css";

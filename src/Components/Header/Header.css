@@ -12,9 +12,12 @@
 }
 
 .menu-nav {
-  color: #868686;
   display: flex;
   font-size: 18px;
+}
+
+.menu-nav a {
+  color: #868686;
 }
 
 .nav-link {
