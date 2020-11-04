@@ -35,9 +35,12 @@
   margin: 0 auto;
   width: 273px;
   height: 50px;
-  color: white;
   font-weight: bold;
   transition: all 0.1s ease-in-out;
+}
+
+.button a {
+  color: white;
 }
 
 .button:hover {
