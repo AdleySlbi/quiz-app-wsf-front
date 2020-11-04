@@ -1,0 +1,25 @@
+.leaderboards {
+  height: 100%;
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaderboards h1 {
+  color: #1730a4;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 650px) {
+  .leaderboards {
+    display: block;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.leaderboard-background {
+  width: 80%;
+}
