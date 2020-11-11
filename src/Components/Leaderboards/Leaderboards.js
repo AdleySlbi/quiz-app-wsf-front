@@ -3,22 +3,42 @@ import Img from "../../assets/leaderboards-img.svg";
 import "./Leaderboards.css";
 
 function Leaderboards() {
-  const [array_scores, setArrayScores] = useState([]);
+  const [array_scores1, setArrayScores1] = useState([]);
+  const [array_scores2, setArrayScores2] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const url = 'https://adley-quizz.herokuapp.com/api/scores';
+    // const url = 'https://adley-quizz.herokuapp.com/api/scores';
+    // const url = 'https://polar-ocean-73785.herokuapp.com/api/scores/60';
 
-      fetch(url)
-      .then(res => res.json())
-      .then(res => {
-        setArrayScores(res.scores)
-        setIsLoaded(true)
-      },
-      (error) => {
-        setError(error);
-      })
+    Promise.all(
+      [
+        fetch('https://wsf-popcorn-backend.herokuapp.com/api/scores'),
+        fetch('https://polar-ocean-73785.herokuapp.com/api/scores/60')
+      ]
+    )
+    .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+    .then(([data1, data2]) => {
+            setArrayScores1(data1.scores)
+            setArrayScores2(data2.data)
+            console.log(data2.data)
+            setIsLoaded(true)
+        }, 
+        (error) => {
+          setError(error);
+        }
+    );
+     
+      // fetch(url)
+      // .then(res => res.json())
+      // .then(res => {
+      //   setArrayScores(res.data)
+      //   setIsLoaded(true)
+      // },
+      // (error) => {
+      //   setError(error);
+      // })
 
   }, [])
 
@@ -40,9 +60,15 @@ function Leaderboards() {
           />
         </div>
         <div className="col-12 col-sm-6">
-          {array_scores  ? (array_scores.map((test, i) => (
-              <span key={i}>
-                #{test.username} {test.score}
+          {array_scores1  ? (array_scores1.map((field, i) => (
+              <span className="row" key={i}>
+                #{field.username} {field.score}
+              </span>)) ) 
+            : (<></>)
+          }
+          {array_scores2  ? (array_scores2.map((field, i) => (
+              <span className="row" key={i}>
+                #{field.username} {field.score}
               </span>)) ) 
             : (<></>)
           }
