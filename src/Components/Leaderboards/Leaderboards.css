@@ -23,3 +23,14 @@
 .leaderboard-background {
   width: 80%;
 }
+
+.score-row {
+  color: #1730a4;
+  font-weight: bold;
+  /* background: #ffbc48; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 45px;
+  font-family: OpenSans;
+}
