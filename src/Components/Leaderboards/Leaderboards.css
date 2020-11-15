@@ -24,8 +24,15 @@
   width: 80%;
 }
 
+h3 {
+  font-family: OpenSans;
+  color: black;
+  font-weight: bold;
+  padding-top: 1%;
+}
+
 .score-row {
-  color: #1730a4;
+  color: white;
   font-weight: bold;
   /* background: #ffbc48; */
   display: flex;
