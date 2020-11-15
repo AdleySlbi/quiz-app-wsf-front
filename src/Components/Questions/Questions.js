@@ -7,7 +7,6 @@ const axios = require('axios');
 function Questions() {
 
   const [questions, setQuestions] = useState(null)
-  const [questionRandom, setQuestionRandom] = useState(null)
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(null)
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -66,10 +65,6 @@ function Questions() {
   }, [])
 
 
-  // questions.push(questionRandom)
-  console.log(questionRandom)
-
-
   if (error) {
     return (
       <div>
@@ -83,13 +78,8 @@ function Questions() {
       </div>
     )
   } else {
-    // console.log(questions);
-    // console.log(questionRandom);
-    // questions.push(questionRandom);
-    // console.log(questions);
-
     return (
-      <div>
+      <div className="questions-content">
         { showScore ? (
           <div className="col-12 pt-5 d-flex justify-content-center align-self-center">
             <div className="scoreWrapper">
