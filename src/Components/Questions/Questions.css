@@ -1,0 +1,49 @@
+.scoreWrapper {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    background-color: #fafafa;
+    border-radius: 5px;
+}
+
+.scoreWrapper span {
+    display: block;
+}
+
+.questionWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6774FF;
+    font-weight: bold;
+}
+
+.answerWrapper ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.questionNumber {
+    padding-right: 10px;
+    text-align: end;
+    color: #6774FF;
+}
+
+.oneAnswer {
+    background-color: #00000021;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 50px;
+    font-weight: 800;
+}
+
+.oneAnswer:hover {
+    cursor: pointer;
+    background-color: #6774FF;
+}
+
+.answerChoosed {
+    background-color: #6774FF;
+    color: #fff;
+}
