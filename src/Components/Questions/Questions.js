@@ -9,10 +9,11 @@ function Questions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+  const [player, setPlayer] = useState('');
 
   const handleAnswerButtonClick = (isCorrect) => {
     if(isCorrect === true) {
-      alert("this answer is correct!");
+      // alert("this answer is correct!");
       setScore(score + 1);
     }
 
@@ -24,12 +25,14 @@ function Questions() {
     }
   }
 
-  // useEffect(() => {
-  //   axios.get(questionUrl)
-  //     .then(response => {
-  //       setQuestions(response.data.questions)
-  //     })
-  // }, [questionUrl])
+  const handlePlayerInput = (event) => {
+    setPlayer(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    alert('Le nom a été soumis : ' + player + score);
+    event.preventDefault();
+  }
 
   useEffect(() => {
     fetch(questionUrl)
@@ -60,9 +63,21 @@ function Questions() {
   } else {
     return (
       <div>
-
         { showScore ? (
-          <div>You scored {score} out of {questions.length}</div>
+          <div className="col-12 pt-5 d-flex justify-content-center align-self-center">
+            <div className="scoreWrapper">
+              <span>Félicitation, you know Adley.</span>
+              <span>You scored {score} out of {questions.length}</span>
+              <div>
+                <span>Enter your name</span>
+                <form onSubmit={handleSubmit}>
+                  <input type="text" value={player.value} onChange={handlePlayerInput} />
+                  <input type="submit" value="Envoyer" />
+
+                </form>
+              </div>
+            </div>
+          </div>
         ) : (
             <>
               <div className="questions d-flex col-12 pt-5">
