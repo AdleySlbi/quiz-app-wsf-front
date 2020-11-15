@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  font-family: OpenSans;
+  font-family: 'Open Sans', sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;

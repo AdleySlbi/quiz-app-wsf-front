@@ -81,12 +81,12 @@ function Questions() {
     return (
       <div className="questions-content">
         { showScore ? (
-          <div className="col-12 pt-5 d-flex justify-content-center align-self-center">
-            <div className="scoreWrapper">
-              <span>Félicitation, you know Adley.</span>
-              <span>You scored {score} out of {questions.length}</span>
+          <div className="wrapperScoreWrapper col-12 pt-5 d-flex justify-content-center align-self-center">
+            <div className="scoreWrapper d-flex flex-column justify-content-center align-self-center">
+              <h2>Félicitation, you know Adley.</h2>
+              <h3>You scored {score} out of {questions.length}</h3>
               <div>
-                <span>Enter your name</span>
+                <span className="inputStyle">Enter your name</span>
                 <form onSubmit={handleSubmit}>
                   <input type="text" value={player.value} onChange={handlePlayerInput} />
                   <div onClick={handleSubmit} className="button col mt-3">
