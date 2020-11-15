@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./Questions.css";
-// const axios = require('axios');
+const axios = require('axios');
 
 function Questions() {
   const questionUrl = 'https://adley-quizz.herokuapp.com/api/questions'
-  const [questions, setQuestions] = useState(null)
+  const questionUrlRandom = 'https://polar-ocean-73785.herokuapp.com/api/questions/random'
+  const [questions, setQuestions] = useState([])
+  const [questionRandom, setQuestionRandom] = useState(null)
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(null)
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -36,21 +38,22 @@ function Questions() {
     console.log(player, score);
     event.preventDefault();
 
-    fetch("https://adley-quizz.herokuapp.com/api/scores", {
-      method: "POST",
-      body: JSON.stringify({
-        username: player,
-        score: score
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "Access-Control-Allow-Origin": "*",
-      }
-    })
-      // Converting to JSON 
-      .then(response => response.json())
-      // Displaying results to console 
-      .then(json => console.log(json));
+    // fetch("https://adley-quizz.herokuapp.com/api/scores", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     username : player,
+    //     score : score
+    //   }),
+    //   headers: {
+    //     "Content-type": "application/json; charset=UTF-8",
+    //     "Access-Control-Allow-Origin": "*",
+    //   }
+    // })
+    //   // Converting to JSON 
+    //   .then(response => response.json())
+    //   // Displaying results to console 
+    //   .then(json => console.log(json));
+
     // await axios.post(
     //   'https://adley-quizz.herokuapp.com/api/scores',
     //   {
@@ -68,21 +71,46 @@ function Questions() {
     //       console.log("Error ", error);
     //   }
     // )
+
+    await axios({
+      method: 'post',
+      url: 'https://adley-quizz.herokuapp.com/api/scores',
+      data: {
+        username: player,
+        score: score,
+      }
+    })
   }
 
   useEffect(() => {
+
     fetch(questionUrl)
       .then(response => response.json())
       .then(
         data => {
           setQuestions(data.questions)
+          // setLoaded(true)
+        },
+        (error) => {
+          setError(error)
+        }
+      )
+
+      fetch(questionUrlRandom)
+      .then(response => response.json())
+      .then(
+        data => {
+          setQuestionRandom(data.questions)
           setLoaded(true)
         },
         (error) => {
           setError(error)
         }
       )
-  }, [questionUrl])
+  }, [questionUrl, questionUrlRandom])
+
+  // questions.push(questionRandom)
+
 
   if (error) {
     return (
@@ -97,6 +125,12 @@ function Questions() {
       </div>
     )
   } else {
+    // console.log(questions);
+    // console.log(questionRandom);
+    // questions.push(questionRandom);
+    // console.log(questions);
+    setQuestions([...questions, questionRandom])
+
     return (
       <div>
         { showScore ? (
