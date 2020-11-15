@@ -14,8 +14,7 @@ function Homepage() {
       <div className="home-text">
         <h1 className="col home-title">Question et Réponse Quiz</h1>
         <p className=" col m-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget
-          libero feugiat, faucibus libero id, scelerisque quam
+          Bienvenu sur l'Ego-Quiz, connaissez-vous vraiment Adley ? Cliquez sur le bouton juste en dessous pour le savoir !
         </p>
         <div className="button col mt-3">
           <Link to="/quiz">Commençons</Link>
