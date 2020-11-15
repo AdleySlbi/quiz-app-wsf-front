@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./Questions.css";
-const axios = require('axios');
+// const axios = require('axios');
 
 function Questions() {
   const questionUrl = 'https://adley-quizz.herokuapp.com/api/questions'
@@ -12,7 +12,7 @@ function Questions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
-  const [player, setPlayer] = useState('');
+  const [player, setPlayer] = useState("");
 
   const handleAnswerButtonClick = (isCorrect) => {
     if (isCorrect === true) {
@@ -32,24 +32,42 @@ function Questions() {
     setPlayer(event.target.value);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    console.log(player, score);
     event.preventDefault();
-    axios({
-      method: 'post',
-      url: 'https://adley-quizz.herokuapp.com/api/scores',
-      data: {
-        'username' : player,
-        'score' : score
+
+    fetch("https://adley-quizz.herokuapp.com/api/scores", {
+      method: "POST",
+      body: JSON.stringify({
+        username: player,
+        score: score
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
       }
     })
-      .then(function (reponse) {
-        //On traite la suite une fois la réponse obtenue 
-        console.log(reponse);
-      })
-      .catch(function (erreur) {
-        //On traite ici les erreurs éventuellement survenues
-        console.log(erreur);
-      });
+      // Converting to JSON 
+      .then(response => response.json())
+      // Displaying results to console 
+      .then(json => console.log(json));
+    // await axios.post(
+    //   'https://adley-quizz.herokuapp.com/api/scores',
+    //   {
+    //       username : player,
+    //       score: score,
+    //   },
+    //   {
+    //       'Content-Type': 'application/json',
+    //       'Access-Control-Allow-Origin': '*',
+    //   }
+    //   ).then(response => {
+    //       console.log("Success ", response);
+    //   })
+    //   .catch(error => {
+    //       console.log("Error ", error);
+    //   }
+    // )
   }
 
   useEffect(() => {
@@ -91,7 +109,7 @@ function Questions() {
                 <form onSubmit={handleSubmit}>
                   <input type="text" value={player.value} onChange={handlePlayerInput} />
                   <div onClick={handleSubmit} className="button col mt-3">
-                    <Link  to="/score">Envoyer</Link>
+                    <Link to="/score">Envoyer</Link>
                   </div>
 
                 </form>
