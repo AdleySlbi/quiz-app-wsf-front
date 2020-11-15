@@ -39,6 +39,12 @@ h2 {
   font-weight: bold;
 }
 
+@media screen and (max-width: 650px) {
+  .questionWrapper h1 {
+    font-size: 20px;
+  }
+}
+
 .answerWrapper ul {
   list-style: none;
   margin: 0;
@@ -67,4 +73,10 @@ h2 {
 .answerChoosed {
   background-color: #6774ff;
   color: #fff;
+}
+
+@media screen and (max-width: 650px) {
+  .oneAnswer {
+    font-size: 12px;
+  }
 }
