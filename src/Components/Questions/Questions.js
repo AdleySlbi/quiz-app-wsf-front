@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import "./Questions.css";
+const axios = require('axios');
 
 function Questions() {
   const questionUrl = 'https://adley-quizz.herokuapp.com/api/questions'
@@ -12,13 +15,13 @@ function Questions() {
   const [player, setPlayer] = useState('');
 
   const handleAnswerButtonClick = (isCorrect) => {
-    if(isCorrect === true) {
+    if (isCorrect === true) {
       // alert("this answer is correct!");
       setScore(score + 1);
     }
 
     const nextQuestion = currentQuestion + 1;
-    if(nextQuestion < questions.length){
+    if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
@@ -30,8 +33,23 @@ function Questions() {
   }
 
   const handleSubmit = (event) => {
-    alert('Le nom a été soumis : ' + player + score);
     event.preventDefault();
+    axios({
+      method: 'post',
+      url: 'https://adley-quizz.herokuapp.com/api/scores',
+      data: {
+        'username' : player,
+        'score' : score
+      }
+    })
+      .then(function (reponse) {
+        //On traite la suite une fois la réponse obtenue 
+        console.log(reponse);
+      })
+      .catch(function (erreur) {
+        //On traite ici les erreurs éventuellement survenues
+        console.log(erreur);
+      });
   }
 
   useEffect(() => {
@@ -72,7 +90,9 @@ function Questions() {
                 <span>Enter your name</span>
                 <form onSubmit={handleSubmit}>
                   <input type="text" value={player.value} onChange={handlePlayerInput} />
-                  <input type="submit" value="Envoyer" />
+                  <div onClick={handleSubmit} className="button col mt-3">
+                    <Link  to="/score">Envoyer</Link>
+                  </div>
 
                 </form>
               </div>
