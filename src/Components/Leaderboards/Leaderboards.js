@@ -18,7 +18,6 @@ function Leaderboards() {
     "#3E88EE",
     "#142855",
   ];
-   
 
   let currentColor = null;
   const randomColor = () => {
@@ -70,7 +69,7 @@ function Leaderboards() {
         <div className="col-12 col-sm-6">
           {array_scores2 && <h3>Wsf PopCorn Quiz</h3>}
           {array_scores1  ? (array_scores1.map((field, i) => (
-              <span className="score-row row mt-2 p-1" style={{ background: randomColor() }} key={i}>
+              <span className="score-row row mt-2 p-1" style={{ background: randomColor()  }} key={i}>
                 <p className="m-0 p-0 pl-5" style={{ textTransform: 'capitalize'}}>{field.username} </p>
                 <p className="m-0 p-0 pr-5">score : {field.score}</p>
               </span>)) ) 
